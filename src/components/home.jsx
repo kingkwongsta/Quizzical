@@ -1,15 +1,17 @@
 import React from "react";
+import blob_top from "../assets/blob-top.png";
+import blob_bot from "../assets/blob-bottom.png";
 
 export default function Home() {
   return (
     <div className="home">
       <h1 className="home-title">Quizzical</h1>
       <h2 className="home-description">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat ipsam
-        soluta alias aut rerum tenetur illo corporis laudantium, nisi similique!
-        Officiis quis doloribus rem sequi molestias architecto quas aliquam ad.
+        A trivia game of 5 questions from many different topics
       </h2>
       <button className="home-start-button">Start Quiz</button>
+      <img src={blob_top} alt="blob graphic top" className="home-blob-top" />
+      <img src={blob_bot} alt="blob graphic bot" className="home-blob-bot" />
     </div>
   );
 }
