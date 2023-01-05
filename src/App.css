@@ -4,4 +4,61 @@
 
 body {
   margin: 0;
+  background-color: #f5f7fb;
+}
+
+/* HOME COMPONENT */
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.home-title {
+  font-family: "Karla";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 31.25px;
+  line-height: 37px;
+  text-align: center;
+  margin: 200px 0px 25px 0px;
+
+  color: #293264;
+}
+.home-description {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  margin: 0px 100px 0px 100px;
+  color: #293264;
+}
+.home-start-button {
+  /* button */
+  width: 160px;
+  height: 40px;
+  background: #4d5b9e;
+  border-radius: 15px;
+  border: #4d5b9e;
+  /* text */
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: #f5f7fb;
+  margin-top: 30px;
+}
+.home-blob-top {
+  position: absolute;
+  left: 75%;
+  width: 250px;
+}
+.home-blob-bot {
+  position: absolute;
+  right: 75%;
+  bottom: 0%;
+  width: 250px;
 }
