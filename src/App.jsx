@@ -3,11 +3,15 @@ import "./App.css";
 import Home from "./components/home";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [displayHome, setDisplayHome] = useState(true);
+
+  function startQuiz() {
+    setDisplayHome(false);
+  }
 
   return (
     <div className="App">
-      <Home />
+      {displayHome ? <Home startQuiz={startQuiz} /> : ""}
     </div>
   );
 }
