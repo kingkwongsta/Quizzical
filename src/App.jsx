@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import "./App.css";
 import { nanoid } from "nanoid";
 import Home from "./components/home";
@@ -6,11 +6,13 @@ import Quiz from "./components/quiz";
 
 function App() {
   //State to control when to show the Home Page
-  const [displayHome, setDisplayHome] = useState(false);
+  const [displayHome, setDisplayHome] = useState(true);
   //State to store quiz data
   const [quizData, setQuizData] = useState();
   //Statee to dynamically generate quiz Q & A
   const [quizElements, setQuizElements] = useState();
+  //useRef to run data fetch once
+  const dataFetchedRef = useRef(false);
 
   //Function to begin the quiz game
   function startQuiz() {
@@ -22,29 +24,35 @@ function App() {
     fetch("https://opentdb.com/api.php?amount=5&type=multiple")
       .then((response) => {
         return response.json();
-        // hydrate quizData
       })
       .then((data) => {
-        const temp1 = data.results;
-        setQuizData(temp1);
-        console.log(quizData);
+        const temp = data.results;
+        // hydrate quizData
+        setQuizData(temp);
+        console.log("setting QuizData");
         // hydrate quizElements
-        const temp = temp1.map((x) => {
+        const temp1 = temp.map((x) => {
+          const allOptions = x.incorrect_answers;
+          allOptions.push(x.correct_answer);
           return (
             <Quiz
               key={nanoid()}
               question={x.question}
-              options={x.incorrect_answers}
+              options={allOptions}
+              correct={x.correct_answer}
             />
           );
         });
-        setQuizElements(temp);
-        // console.log(quizElements);
+        setQuizElements(temp1);
+        console.log(temp1);
       });
   };
 
   useEffect(() => {
+    if (dataFetchedRef.current) return;
+    dataFetchedRef.current = true;
     fetchQuizData();
+    console.log("run effect");
   }, []);
 
   //
@@ -78,8 +86,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* {quizElements} */}
-      {/* {displayHome ? <Home startQuiz={startQuiz} /> : quizElements} */}
+      {displayHome ? <Home startQuiz={startQuiz} /> : quizElements}
     </div>
   );
 }
