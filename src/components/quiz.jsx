@@ -2,16 +2,27 @@ import { useState } from "react";
 import { nanoid } from "nanoid";
 import blob_top from "../assets/blob-top.png";
 import blob_bot from "../assets/blob-bottom.png";
-import Options from "./options";
+import Option from "./option";
 
 export default function Quiz(props) {
-  const [isSelected, setIsSelected] = useState(false);
-  function handleSelect() {
-    setIsSelected((x) => !x);
+  const [allOptions, setAllOptions] = useState(createOptions());
+  function createOptions() {
+    const temp = props.options;
+    const optionsArray = temp.map((x) => {
+      return { option: x, isSelected: false };
+    });
+    return optionsArray;
   }
+  // const [isSelected, setIsSelected] = useState(false);
+  // function handleSelect() {
+  //   setIsSelected((x) => !x);
+  // }
   // Variable to dynamically generate answer options
-  console.log("checking Quiz Options");
-  const styles = { backgroundColor: isSelected ? "#D6DBF5" : "transparent" };
+  console.log(allOptions);
+  // const styles = { backgroundColor: isSelected ? "#D6DBF5" : "transparent" };
+  const answerElements2 = allOptions.map((x) => {
+    return <Option value={x.option} />;
+  });
   const answerElements = props.options.map((x) => {
     return (
       <>
@@ -19,8 +30,8 @@ export default function Quiz(props) {
           <button
             key={nanoid()}
             className="quiz-button"
-            style={styles}
-            onClick={handleSelect}
+            // style={styles}
+            // onClick={handleSelect}
           >
             {x}
           </button>
@@ -31,7 +42,7 @@ export default function Quiz(props) {
   return (
     <div className="quiz-container">
       <h2 className="quiz-question">{props.question}</h2>
-      <div className="quiz-options">{answerElements}</div>
+      <div className="quiz-options">{answerElements2}</div>
       <hr className="quiz-border" />
     </div>
   );
