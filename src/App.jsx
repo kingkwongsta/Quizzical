@@ -7,6 +7,15 @@ import Quiz from "./components/quiz";
 // IMAGES
 import blob_top from "./assets/blob-top.png";
 import blob_bot from "./assets/blob-bottom.png";
+// REACT QUERY
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
+// import { getTodos, postTodo } from '../my-api'
 
 function App() {
   //State to control when to show the Home Page
