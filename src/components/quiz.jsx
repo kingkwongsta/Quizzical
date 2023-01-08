@@ -1,27 +1,39 @@
-import React from "react";
+import { useState } from "react";
 import { nanoid } from "nanoid";
 import blob_top from "../assets/blob-top.png";
 import blob_bot from "../assets/blob-bottom.png";
+import Options from "./options";
 
 export default function Quiz(props) {
-  // Variable to dynamically generate answer options
-  //   const combineOptions = props.options;
-  //   combineOptions.push(props.correct);
-  //   console.log(combineOptions);
-  console.log("checking Quiz Options");
-  const answerElements = props.options.map((x) => {
-    return (
-      <button key={nanoid()} className="quiz-button">
-        {x}
-      </button>
-    );
-  });
+  //   const [isSelected, setIsSelected] = useState(false);
+  //   function handleSelect() {
+  //     setIsSelected((x) => !x);
+  //   }
+  //   // Variable to dynamically generate answer options
+  //   console.log("checking Quiz Options");
+  //   const styles = { backgroundColor: isSelected ? "#D6DBF5" : "transparent" };
+  //   const answerElements = props.options.map((x) => {
+  //     return (
+  //       <>
+  //         <div className="quiz-options-container">
+  //           <button
+  //             key={nanoid()}
+  //             className="quiz-button"
+  //             style={styles}
+  //             onClick={handleSelect}
+  //           >
+  //             {x}
+  //           </button>
+  //         </div>
+  //       </>
+  //     );
+  //   });
   return (
-    <div className="quiz-container">
-      <h2 className="quiz-question">{props.question}</h2>
-      <div className="quiz-options">{answerElements}</div>
-      {/* <img src={blob_top} alt="blob graphic top" className="home-blob-top" />
-      <img src={blob_bot} alt="blob graphic bot" className="home-blob-bot" /> */}
-    </div>
+    <Options />
+    // {/* <div className="quiz-container">
+    //   <h2 className="quiz-question">{props.question}</h2>
+    //   <div className="quiz-options">{answerElements}</div>
+    //   <hr className="quiz-border" />
+    // </div> */}
   );
 }

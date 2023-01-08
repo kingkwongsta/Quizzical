@@ -1,8 +1,12 @@
 import { useEffect, useState, useRef } from "react";
 import "./App.css";
 import { nanoid } from "nanoid";
+// COMPONENTS
 import Home from "./components/home";
 import Quiz from "./components/quiz";
+// IMAGES
+import blob_top from "./assets/blob-top.png";
+import blob_bot from "./assets/blob-bottom.png";
 
 function App() {
   //State to control when to show the Home Page
@@ -87,6 +91,8 @@ function App() {
   return (
     <div className="App">
       {displayHome ? <Home startQuiz={startQuiz} /> : quizElements}
+      <img src={blob_top} alt="blob graphic top" className="blob-top" />
+      <img src={blob_bot} alt="blob graphic bot" className="blob-bot" />
     </div>
   );
 }

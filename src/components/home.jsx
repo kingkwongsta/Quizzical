@@ -12,8 +12,6 @@ export default function Home(props) {
       <button className="home-start-button" onClick={props.startQuiz}>
         Start Quiz
       </button>
-      <img src={blob_top} alt="blob graphic top" className="home-blob-top" />
-      <img src={blob_bot} alt="blob graphic bot" className="home-blob-bot" />
     </div>
   );
 }
