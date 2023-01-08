@@ -6,6 +6,21 @@ body {
   margin: 0;
   background-color: #f5f7fb;
 }
+.App {
+  margin-top: 30px;
+}
+.blob-top {
+  position: absolute;
+  left: 80%;
+  top: 0%;
+  width: 150px;
+}
+.blob-bot {
+  position: absolute;
+  right: 75%;
+  bottom: -10%;
+  width: 150px;
+}
 
 /* HOME COMPONENT */
 .home {
@@ -51,14 +66,40 @@ body {
   color: #f5f7fb;
   margin-top: 30px;
 }
-.home-blob-top {
-  position: absolute;
-  left: 75%;
-  width: 250px;
+
+/* QUIZ SECTION */
+.quiz-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 10px 10px 0px 30px;
 }
-.home-blob-bot {
-  position: absolute;
-  right: 75%;
-  bottom: 0%;
-  width: 250px;
+.quiz-question {
+  font-family: "Karla";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  /* identical to box height */
+  color: #293264;
+}
+.quiz-button {
+  height: 20.65px;
+  margin: 0px 6px 0px 6px;
+  border: 0.794239px solid #4d5b9e;
+  border-radius: 7px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 12px;
+  text-align: center;
+
+  color: #293264;
+}
+.quiz-border {
+  border: 0.4px solid #dbdef0;
+  transform: rotate(-0.05deg);
+  margin-top: 20px;
+  width: 510px;
 }
