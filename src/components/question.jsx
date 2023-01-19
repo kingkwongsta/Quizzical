@@ -5,7 +5,7 @@ import { decode } from "html-entities";
 
 export default function Question(props) {
   //State to store selected answer
-  const [selectedAnswer, setselectedAnswer] = useState("");
+  const [selectedAnswer, setSelectedAnswer] = useState();
   const [options, setOptions] = useState();
 
   useEffect(() => {
@@ -25,15 +25,18 @@ export default function Question(props) {
         <Option
           key={nanoid()}
           op={x}
-          handleSelectedAnswer={handleSelectedAnswer}
+          handleSelection={() => handleSelection(x)}
+          selectedAnswer={selectedAnswer}
         />
       );
     });
     return optionElements;
   }
 
-  function handleSelectedAnswer(selection) {
-    setselectedAnswer(selection);
+  function handleSelection(selection) {
+    setSelectedAnswer(["cool"]);
+    console.log("handleSelection in parent");
+    console.log(selectedAnswer);
   }
 
   return (
