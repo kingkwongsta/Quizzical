@@ -5,8 +5,8 @@ import { decode } from "html-entities";
 
 export default function Question(props) {
   //State to store selected answer
-  const [selectedAnswer, setSelectedAnswer] = useState();
   const [options, setOptions] = useState();
+  const [selectedAnswer, setSelectedAnswer] = useState(1);
 
   useEffect(() => {
     console.log("Setting Options");
@@ -25,7 +25,7 @@ export default function Question(props) {
         <Option
           key={nanoid()}
           op={x}
-          handleSelection={() => handleSelection(x)}
+          updateAnswer={() => handleSelection(x)}
           selectedAnswer={selectedAnswer}
         />
       );
@@ -34,7 +34,8 @@ export default function Question(props) {
   }
 
   function handleSelection(selection) {
-    setSelectedAnswer(["cool"]);
+    setOptions(selection);
+    // setSelectedAnswer((x) => x + 1);
     console.log("handleSelection in parent");
     console.log(selectedAnswer);
   }
