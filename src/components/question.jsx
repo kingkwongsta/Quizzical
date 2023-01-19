@@ -10,10 +10,13 @@ export default function Question(props) {
   const [work, setWork] = useState("");
   const [state, setState] = useState(0);
 
-  useEffect(() => {
-    console.log("Setting Options");
-    setOptions(defineOptions);
-  }, []);
+  const optionsElement = defineOptions();
+
+  // useEffect(() => {
+  //   console.log("Setting Options");
+  //   optionsElement = defineOptions();
+  //   setState(1);
+  // }, []);
 
   // ------ Option Component Creation ------
   function defineOptions() {
@@ -35,28 +38,19 @@ export default function Question(props) {
     });
     return optionElements;
   }
-  function handler() {
-    setState((x) => x + 1);
-    console.log(state);
-  }
 
   function handleSelection(selection) {
-    setSelectedAnswer((x) => {
-      return x + 1;
-    });
+    setSelectedAnswer(selection);
     console.log("handleSelection in parent");
     console.log(`parameter ${selection}`);
     console.log(selectedAnswer);
   }
 
-  useEffect(() => {
-    console.log("answer has been updated");
-  }, [selectedAnswer]);
-
   return (
     <>
       <div className="quiz-question">{decode(props.question)}</div>
-      <div className="quiz-option-container">{options}</div>
+      {/* <div className="quiz-option-container">{options}</div> */}
+      <div className="quiz-option-container">{optionsElement}</div>
     </>
   );
 }
