@@ -5,19 +5,34 @@ import { decode } from "html-entities";
 
 export default function Question(props) {
   //State to store selected answer
-  const [selectedAnswer, setSelectedAnswer] = useState(1);
-  const [options, setOptions] = useState();
-  const [work, setWork] = useState("");
-  const [state, setState] = useState(0);
-
-  const optionsElement = defineOptions();
-
+  const [selectedAnswer, setSelectedAnswer] = useState();
+  const [options, setOptions] = useState([]);
   // useEffect(() => {
   //   console.log("Setting Options");
-  //   optionsElement = defineOptions();
-  //   setState(1);
+  //   setOptions(defineOptions);
+  //   // optionsElement = defineOptions();
   // }, []);
 
+  useEffect(() => {
+    console.log("Setting Options");
+    //Create Array for Option Data to be passed down
+    const allOptions = props.incorrect;
+    allOptions.push(props.correct);
+    //Sort to mix correct + incorrect answers
+    allOptions.sort();
+    setOptions(allOptions);
+  }, [options]);
+
+  function createOptions() {
+    return options.map((option, index) => {
+      <Option
+        key={index}
+        option={option}
+        selectedAnswer={selectedAnswer}
+        handleSelection={() => handleSelection(option)}
+      />;
+    });
+  }
   // ------ Option Component Creation ------
   function defineOptions() {
     //Create Array for Option Data to be passed down
@@ -25,14 +40,13 @@ export default function Question(props) {
     allOptions.push(props.correct);
     //Sort to mix correct + incorrect answers
     allOptions.sort();
-    const optionElements = allOptions.map((x, index) => {
+    const optionElements = allOptions.map((option, index) => {
       return (
         <Option
           key={index}
-          op={x}
-          handler={() => handler()}
-          handleSelection={() => handleSelection(x)}
-          // selectedAnswer={selectedAnswer}
+          option={option}
+          selectedAnswer={selectedAnswer}
+          handleSelection={() => handleSelection(option)}
         />
       );
     });
@@ -50,7 +64,7 @@ export default function Question(props) {
     <>
       <div className="quiz-question">{decode(props.question)}</div>
       {/* <div className="quiz-option-container">{options}</div> */}
-      <div className="quiz-option-container">{optionsElement}</div>
+      <div className="quiz-option-container">{createOptions()}</div>
     </>
   );
 }
