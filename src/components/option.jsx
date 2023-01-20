@@ -3,10 +3,10 @@ import { decode } from "html-entities";
 
 export default function Option({
   option,
-  handleSelection,
   selectedAnswer,
   checkAnswers,
   correct,
+  handleSelection,
 }) {
   //define background color styles
   let styles = { backgroundColor: "transparent" };
@@ -18,9 +18,15 @@ export default function Option({
     styles.backgroundColor = "#94D7A2";
   }
   //wrong answer selected
-  else if (checkAnswers && selectedAnswer !== correct && option !== correct) {
+  else if (checkAnswers && selectedAnswer == option && option !== correct) {
     styles.backgroundColor = "#F8BCBC";
-  } else if (checkAnswers && option !== selectedAnswer) {
+  }
+  //correct answer not selected
+  else if (checkAnswers && option === correct) {
+    styles.backgroundColor = "#94D7A2";
+  }
+  //wrong answers that were not selected
+  else if (checkAnswers && option !== selectedAnswer) {
     styles.backgroundColor = "transparent";
   }
 

@@ -9,6 +9,7 @@ export default function Question({
   thequestion,
   allOptions,
   checkAnswers,
+  setCorrectCounter,
 }) {
   //State to store selected answer
   const [selectedAnswer, setSelectedAnswer] = useState("");
@@ -24,6 +25,7 @@ export default function Question({
           correct={correct}
           selectedAnswer={selectedAnswer}
           handleSelection={() => handleSelection(option)}
+          handleCounter={() => handleCounter()}
           checkAnswers={checkAnswers}
         />
       );
@@ -33,6 +35,13 @@ export default function Question({
   function handleSelection(selection) {
     setSelectedAnswer(selection);
   }
+
+  //Add correct answers to correctCounter
+  useEffect(() => {
+    if (checkAnswers === true && selectedAnswer === correct) {
+      setCorrectCounter((prev) => prev + 1);
+    }
+  }, [checkAnswers]);
 
   return (
     <>
