@@ -13,13 +13,15 @@ export default function Quiz(props) {
   // console.log("checking Quiz Options");
   // const styles = { backgroundColor: isSelected ? "#D6DBF5" : "transparent" };
   const quizData = props.data;
-  const answerElements = quizData.map((x) => {
+  console.log(quizData);
+  const answerElements = quizData.map((x, index) => {
     return (
       <Question
-        key={nanoid()}
+        key={index}
         correct={x.correct_answer}
         incorrect={x.incorrect_answers}
-        question={x.question}
+        thequestion={x.question}
+        allOptions={x.options}
       />
     );
   });
