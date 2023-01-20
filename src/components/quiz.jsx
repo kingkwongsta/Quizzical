@@ -1,16 +1,20 @@
 import { useEffect, useState } from "react";
-import { nanoid } from "nanoid";
 import blob_top from "../assets/blob-top.png";
 import blob_bot from "../assets/blob-bottom.png";
 import Question from "./question";
+// REACT QUERY
+import { useQuery } from "@tanstack/react-query";
+import { fetchData } from "../data";
 
-export default function Quiz(props) {
+export default function Quiz() {
+  const { isLoading, error, data, isFetching } = useQuery(["data"], fetchData);
+
   //State to store if Check Answers clicked
   const [checkAnswers, setCheckAnswers] = useState(false);
   //State to store total correct
   const [correctCounter, setCorrectCounter] = useState(0);
 
-  const quizData = props.data;
+  const quizData = data;
   console.log(quizData);
   const answerElements = quizData.map((x, index) => {
     return (
@@ -48,7 +52,9 @@ export default function Quiz(props) {
         ) : (
           <h3>
             You Scored {correctCounter}/5 correct answers{" "}
-            <button onClick={handlePlayAgain}>Play Again</button>
+            <Link to="/">
+              <button onClick={handlePlayAgain}>Play Again</button>
+            </Link>
           </h3>
         )}
       </div>
