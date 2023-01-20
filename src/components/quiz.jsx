@@ -5,24 +5,35 @@ import blob_bot from "../assets/blob-bottom.png";
 import Question from "./question";
 
 export default function Quiz(props) {
-  // const [isSelected, setIsSelected] = useState(false);
-  // function handleSelect() {
-  //   setIsSelected((x) => !x);
-  // }
-  // // Variable to dynamically generate answer options
-  // console.log("checking Quiz Options");
-  // const styles = { backgroundColor: isSelected ? "#D6DBF5" : "transparent" };
+  //State to store if Check Answers clicked
+  const [checkAnswers, setCheckAnswers] = useState(false);
+
   const quizData = props.data;
-  const answerElements = quizData.map((x) => {
+  console.log(quizData);
+  const answerElements = quizData.map((x, index) => {
     return (
       <Question
-        key={nanoid()}
+        key={index}
         correct={x.correct_answer}
         incorrect={x.incorrect_answers}
-        question={x.question}
+        thequestion={x.question}
+        allOptions={x.options}
+        checkAnswers={checkAnswers}
       />
     );
   });
 
-  return <div className="quiz-container">{answerElements}</div>;
+  function handleCheckAnswers() {
+    setCheckAnswers((prev) => !prev);
+    console.log(checkAnswers);
+  }
+
+  return (
+    <div className="quiz-container">
+      {answerElements}
+      <div className="quiz-check-answer-button">
+        <button onClick={handleCheckAnswers}>Check Answers</button>
+      </div>
+    </div>
+  );
 }
