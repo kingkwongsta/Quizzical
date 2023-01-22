@@ -3,9 +3,9 @@ import { decode } from "html-entities";
 
 export default function Option({
   option,
+  correct,
   selectedAnswer,
   checkAnswers,
-  correct,
   handleSelection,
 }) {
   //define background color styles

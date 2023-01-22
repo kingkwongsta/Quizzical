@@ -7,8 +7,8 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchData } from "../data";
 
 export default function Quiz() {
+  // React Query for API data
   const { isLoading, error, data, isFetching } = useQuery(["data"], fetchData);
-
   //State to store if Check Answers clicked
   const [checkAnswers, setCheckAnswers] = useState(false);
   //State to store total correct
@@ -30,9 +30,11 @@ export default function Quiz() {
     );
   });
 
+  //update state of Check Answer when button is selected
   function handleCheckAnswers() {
     setCheckAnswers((prev) => !prev);
   }
+  //update state of Check Answers when play again is selected
   function handlePlayAgain() {
     setCheckAnswers((prev) => !prev);
   }
