@@ -8,27 +8,32 @@ import { fetchData } from "../data";
 
 export default function Quiz() {
   // React Query for API data
-  const { isLoading, error, data, isFetching } = useQuery(["data"], fetchData);
+  const { status, error, data, isFetching } = useQuery(["data"], fetchData);
   //State to store if Check Answers clicked
   const [checkAnswers, setCheckAnswers] = useState(false);
   //State to store total correct
   const [correctCounter, setCorrectCounter] = useState(0);
+  const [quiz, setQuiz] = useState();
 
-  const quizData = data;
-  console.log(quizData);
-  const answerElements = quizData.map((x, index) => {
-    return (
-      <Question
-        key={index}
-        correct={x.correct_answer}
-        incorrect={x.incorrect_answers}
-        thequestion={x.question}
-        allOptions={x.options}
-        checkAnswers={checkAnswers}
-        setCorrectCounter={setCorrectCounter}
-      />
-    );
-  });
+  useEffect(() => {
+    if (status === "success") {
+      setQuiz(
+        data.map((x, index) => {
+          return (
+            <Question
+              key={index}
+              correct={x.correct_answer}
+              incorrect={x.incorrect_answers}
+              thequestion={x.question}
+              allOptions={x.options}
+              checkAnswers={checkAnswers}
+              setCorrectCounter={setCorrectCounter}
+            />
+          );
+        })
+      );
+    }
+  }, [status]);
 
   //update state of Check Answer when button is selected
   function handleCheckAnswers() {
@@ -39,13 +44,9 @@ export default function Quiz() {
     setCheckAnswers((prev) => !prev);
   }
 
-  useEffect(() => {
-    console.log(correctCounter);
-  }, [correctCounter]);
-
   return (
     <div className="quiz-container">
-      {answerElements}
+      {quiz}
       <div className="quiz-check-answer-section">
         {!checkAnswers ? (
           <div>
