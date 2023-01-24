@@ -16,21 +16,39 @@ export default function Question({
   //State to store all options
   const [options, setOptions] = useState(allOptions);
 
-  function createOptions() {
-    return options.map((option, index) => {
-      return (
-        <Option
-          key={index}
-          option={option}
-          correct={correct}
-          selectedAnswer={selectedAnswer}
-          handleSelection={() => handleSelection(option)}
-          handleCounter={() => handleCounter()}
-          checkAnswers={checkAnswers}
-        />
-      );
-    });
-  }
+  useEffect(() => {
+    setOptions(allOptions);
+  }, [allOptions]);
+
+  let optionElements = options.map((option, index) => {
+    return (
+      <Option
+        key={index}
+        option={option}
+        correct={correct}
+        selectedAnswer={selectedAnswer}
+        handleSelection={() => handleSelection(option)}
+        handleCounter={() => handleCounter()}
+        checkAnswers={checkAnswers}
+      />
+    );
+  });
+
+  // function createOptions() {
+  //   return options.map((option, index) => {
+  //     return (
+  //       <Option
+  //         key={index}
+  //         option={option}
+  //         correct={correct}
+  //         selectedAnswer={selectedAnswer}
+  //         handleSelection={() => handleSelection(option)}
+  //         handleCounter={() => handleCounter()}
+  //         checkAnswers={checkAnswers}
+  //       />
+  //     );
+  //   });
+  // }
 
   function handleSelection(selection) {
     setSelectedAnswer(selection);
@@ -47,7 +65,7 @@ export default function Question({
     <>
       <div className="quiz-question">{decode(thequestion)}</div>
       {/* <div className="quiz-option-container">{options}</div> */}
-      <div className="quiz-option-container">{createOptions()}</div>
+      <div className="quiz-option-container">{optionElements}</div>
     </>
   );
 }
