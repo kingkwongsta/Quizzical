@@ -20,6 +20,7 @@ export const fetchData = async () => {
   const data2 = await data.results.map((x) => {
     const combineOptions = x.incorrect_answers;
     combineOptions.push(x.correct_answer);
+    combineOptions.sort();
     return { ...x, options: combineOptions };
   });
   return data2;
