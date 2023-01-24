@@ -5,6 +5,8 @@ import Question from "./question";
 // REACT QUERY
 import { useQuery } from "@tanstack/react-query";
 import { fetchData } from "../data";
+// REACT ROUTER
+import { Link } from "react-router-dom";
 
 export default function Quiz() {
   // React Query for API data
