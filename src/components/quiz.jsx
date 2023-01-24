@@ -15,40 +15,45 @@ export default function Quiz() {
   const [checkAnswers, setCheckAnswers] = useState(false);
   //State to store total correct
   const [correctCounter, setCorrectCounter] = useState(0);
-  const [quiz, setQuiz] = useState();
 
-  useEffect(() => {
-    if (status === "success") {
-      setQuiz(
-        data.map((x, index) => {
-          return (
-            <Question
-              key={index}
-              correct={x.correct_answer}
-              incorrect={x.incorrect_answers}
-              thequestion={x.question}
-              allOptions={x.options}
-              checkAnswers={checkAnswers}
-              setCorrectCounter={setCorrectCounter}
-            />
-          );
-        })
+  let quizElements = [];
+
+  if (status === "success") {
+    quizElements = createQuizElements();
+  }
+
+  function createQuizElements() {
+    return data.map((x, index) => {
+      return (
+        <Question
+          key={index}
+          correct={x.correct_answer}
+          incorrect={x.incorrect_answers}
+          thequestion={x.question}
+          allOptions={x.options}
+          checkAnswers={checkAnswers}
+          setCorrectCounter={setCorrectCounter}
+        />
       );
-    }
-  }, [status]);
+    });
+  }
 
   //update state of Check Answer when button is selected
   function handleCheckAnswers() {
+    console.log("checking answers");
     setCheckAnswers((prev) => !prev);
   }
-  //update state of Check Answers when play again is selected
+  //reset all state to play again
   function handlePlayAgain() {
     setCheckAnswers((prev) => !prev);
+    setCorrectCounter(0);
+    quizElements = createQuizElements();
+    console.log(quizElements);
   }
 
   return (
     <div className="quiz-container">
-      {quiz}
+      {quizElements}
       <div className="quiz-check-answer-section">
         {!checkAnswers ? (
           <div>
