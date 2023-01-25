@@ -53,8 +53,6 @@ export default function Quiz() {
 
   return (
     <>
-      <img className="blob-top" src={blob_top} alt="blob graphic at top" />
-      <img className="blob-bot" src={blob_bot} alt="blob graphic at bot" />
       <div className="quiz-container">
         {quizElements}
       </div>
@@ -64,15 +62,16 @@ export default function Quiz() {
             <button className="quiz-button-check-answer" onClick={handleCheckAnswers}>Check Answer</button>
           </div>
         ) : (
-          <h3>
+          <h3 className="quiz-score">
             You Scored {correctCounter}/5 correct answers{" "}
             <Link to="/">
-              <button onClick={handlePlayAgain}>Play Again</button>
+              <button className="quiz-play-again" onClick={handlePlayAgain}>Play Again</button>
             </Link>
           </h3>
         )}
       </div>
-
+      <img className="blob-top" src={blob_top} alt="blob graphic at top" />
+      <img className="blob-bot" src={blob_bot} alt="blob graphic at bot" />
     </>
   );
 }
