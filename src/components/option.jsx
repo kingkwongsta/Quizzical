@@ -9,9 +9,10 @@ export default function Option({
   handleSelection,
 }) {
   //define background color styles
-  let styles = { backgroundColor: "transparent" };
+  let styles = { backgroundColor: "transparent", border: "border: 0.794239px solid #4d5b9e" };
   if (!checkAnswers && option == selectedAnswer) {
     styles.backgroundColor = "#D6DBF5";
+    styles.border = "none"
   }
   //correct answer selected
   if (checkAnswers && selectedAnswer == correct && option == correct) {

@@ -52,22 +52,25 @@ export default function Quiz() {
   }
 
   return (
-    <div className="quiz-container">
-      {quizElements}
-      <div className="quiz-check-answer-section">
-        {!checkAnswers ? (
-          <div>
-            <button onClick={handleCheckAnswers}>Check Answer</button>
-          </div>
-        ) : (
-          <h3>
-            You Scored {correctCounter}/5 correct answers{" "}
-            <Link to="/">
-              <button onClick={handlePlayAgain}>Play Again</button>
-            </Link>
-          </h3>
-        )}
+    <>
+      <img className="blob-top" src={blob_top} alt="blob graphic at top" />
+      <div className="quiz-container">
+        {quizElements}
+        <div className="quiz-check-answer-section">
+          {!checkAnswers ? (
+            <div>
+              <button onClick={handleCheckAnswers}>Check Answer</button>
+            </div>
+          ) : (
+            <h3>
+              You Scored {correctCounter}/5 correct answers{" "}
+              <Link to="/">
+                <button onClick={handlePlayAgain}>Play Again</button>
+              </Link>
+            </h3>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

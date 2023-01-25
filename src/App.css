@@ -6,15 +6,18 @@ body {
   margin: 0;
   background-color: #f5f7fb;
 }
+
 .App {
   margin-top: 30px;
 }
+
 .blob-top {
   position: absolute;
   left: 80%;
   top: 0%;
-  width: 150px;
+  width: 350px;
 }
+
 .blob-bot {
   position: absolute;
   right: 75%;
@@ -28,6 +31,7 @@ body {
   flex-direction: column;
   align-items: center;
 }
+
 .home-title {
   font-family: "Karla";
   font-style: normal;
@@ -39,6 +43,7 @@ body {
 
   color: #293264;
 }
+
 .home-description {
   font-family: "Inter";
   font-style: normal;
@@ -49,6 +54,7 @@ body {
   margin: 0px 100px 0px 100px;
   color: #293264;
 }
+
 .home-start-button {
   /* button */
   width: 160px;
@@ -74,6 +80,7 @@ body {
   align-items: flex-start;
   margin: 10px 10px 0px 30px;
 }
+
 .quiz-question {
   font-family: "Karla";
   font-style: normal;
@@ -83,10 +90,12 @@ body {
   /* identical to box height */
   color: #293264;
 }
+
 .quiz-button {
-  height: 20.65px;
-  margin: 0px 6px 0px 6px;
+  height: 29px;
+  margin: 12px 6px 12px 6px;
   border: 0.794239px solid #4d5b9e;
+  padding: 3px;
   border-radius: 7px;
   font-family: "Inter";
   font-style: normal;
@@ -95,11 +104,18 @@ body {
   line-height: 12px;
   text-align: center;
 
+
   color: #293264;
 }
+
 .quiz-border {
   border: 0.4px solid #dbdef0;
   transform: rotate(-0.05deg);
   margin-top: 20px;
   width: 510px;
+}
+
+.quiz-option-container {
+  display: flex;
+  justify-content: center;
 }
