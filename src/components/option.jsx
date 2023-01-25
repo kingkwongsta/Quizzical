@@ -10,12 +10,18 @@ export default function Option({
 }) {
   //define background color styles
   let styles = { backgroundColor: "transparent", border: "border: 0.794239px solid #4d5b9e" };
+  //selected answer
   if (!checkAnswers && option == selectedAnswer) {
     styles.backgroundColor = "#D6DBF5";
     styles.border = "none"
   }
+  //reset style when unselected
+  if (!checkAnswers && option !== selectedAnswer) {
+    styles.backgroundColor = "transparent";
+    styles.border = "1px solid #4d5b9e"
+  }
   //correct answer selected
-  if (checkAnswers && selectedAnswer == correct && option == correct) {
+  else if (checkAnswers && selectedAnswer == correct && option == correct) {
     styles.backgroundColor = "#94D7A2";
   }
   //wrong answer selected

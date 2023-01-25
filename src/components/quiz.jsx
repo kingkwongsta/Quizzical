@@ -54,23 +54,25 @@ export default function Quiz() {
   return (
     <>
       <img className="blob-top" src={blob_top} alt="blob graphic at top" />
+      <img className="blob-bot" src={blob_bot} alt="blob graphic at bot" />
       <div className="quiz-container">
         {quizElements}
-        <div className="quiz-check-answer-section">
-          {!checkAnswers ? (
-            <div>
-              <button onClick={handleCheckAnswers}>Check Answer</button>
-            </div>
-          ) : (
-            <h3>
-              You Scored {correctCounter}/5 correct answers{" "}
-              <Link to="/">
-                <button onClick={handlePlayAgain}>Play Again</button>
-              </Link>
-            </h3>
-          )}
-        </div>
       </div>
+      <div className="quiz-check-answer-section">
+        {!checkAnswers ? (
+          <div className="quiz-submit-container">
+            <button className="quiz-button-check-answer" onClick={handleCheckAnswers}>Check Answer</button>
+          </div>
+        ) : (
+          <h3>
+            You Scored {correctCounter}/5 correct answers{" "}
+            <Link to="/">
+              <button onClick={handlePlayAgain}>Play Again</button>
+            </Link>
+          </h3>
+        )}
+      </div>
+
     </>
   );
 }
