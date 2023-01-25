@@ -6,19 +6,22 @@ body {
   margin: 0;
   background-color: #f5f7fb;
 }
+
 .App {
   margin-top: 30px;
 }
+
 .blob-top {
   position: absolute;
   left: 80%;
   top: 0%;
-  width: 150px;
+  width: 350px;
 }
+
 .blob-bot {
   position: absolute;
-  right: 75%;
-  bottom: -10%;
+  right: 85%;
+  bottom: -30%;
   width: 150px;
 }
 
@@ -28,6 +31,7 @@ body {
   flex-direction: column;
   align-items: center;
 }
+
 .home-title {
   font-family: "Karla";
   font-style: normal;
@@ -39,6 +43,7 @@ body {
 
   color: #293264;
 }
+
 .home-description {
   font-family: "Inter";
   font-style: normal;
@@ -49,6 +54,7 @@ body {
   margin: 0px 100px 0px 100px;
   color: #293264;
 }
+
 .home-start-button {
   /* button */
   width: 160px;
@@ -72,9 +78,11 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 10px 10px 0px 30px;
+  margin: 50px 50px 0px 50px;
 }
+
 .quiz-question {
+  margin-left: 5px;
   font-family: "Karla";
   font-style: normal;
   font-weight: 700;
@@ -83,10 +91,13 @@ body {
   /* identical to box height */
   color: #293264;
 }
+
 .quiz-button {
-  height: 20.65px;
-  margin: 0px 6px 0px 6px;
-  border: 0.794239px solid #4d5b9e;
+  max-height: 32px;
+  min-width: 50px;
+  margin: 12px 6px 12px 6px;
+  border: 1px solid #4d5b9e;
+  padding: 3px;
   border-radius: 7px;
   font-family: "Inter";
   font-style: normal;
@@ -95,11 +106,67 @@ body {
   line-height: 12px;
   text-align: center;
 
+
   color: #293264;
 }
+
 .quiz-border {
   border: 0.4px solid #dbdef0;
   transform: rotate(-0.05deg);
-  margin-top: 20px;
-  width: 510px;
+  margin-bottom: 20px;
+  width: 600px;
+}
+
+.quiz-option-container {
+  display: flex;
+  justify-content: center;
+}
+
+.quiz-check-answer-section {
+  display: flex;
+  justify-content: center;
+}
+
+.quiz-button-check-answer {
+  width: 120px;
+  height: 35px;
+
+  background: #4D5B9E;
+  border-radius: 10px;
+  border: none;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 10.24px;
+  line-height: 12px;
+  text-align: center;
+
+  color: #F5F7FB;
+
+}
+
+.quiz-score {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12.8px;
+  line-height: 15px;
+  text-align: center;
+  color: #293264;
+}
+
+.quiz-play-again {
+  width: 104px;
+  height: 30px;
+  background: #4D5B9E;
+  border-radius: 10px;
+  border: none;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 10.24px;
+  line-height: 12px;
+  text-align: center;
+  color: #F5F7FB;
+  margin-left: 15px;
 }

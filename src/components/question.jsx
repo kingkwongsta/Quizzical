@@ -64,8 +64,8 @@ export default function Question({
   return (
     <>
       <div className="quiz-question">{decode(thequestion)}</div>
-      {/* <div className="quiz-option-container">{options}</div> */}
       <div className="quiz-option-container">{optionElements}</div>
+      <hr className="quiz-border" />
     </>
   );
 }
