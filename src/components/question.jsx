@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import Option from "./option";
-import { nanoid } from "nanoid";
 import { decode } from "html-entities";
 
 export default function Question({
@@ -33,22 +32,6 @@ export default function Question({
       />
     );
   });
-
-  // function createOptions() {
-  //   return options.map((option, index) => {
-  //     return (
-  //       <Option
-  //         key={index}
-  //         option={option}
-  //         correct={correct}
-  //         selectedAnswer={selectedAnswer}
-  //         handleSelection={() => handleSelection(option)}
-  //         handleCounter={() => handleCounter()}
-  //         checkAnswers={checkAnswers}
-  //       />
-  //     );
-  //   });
-  // }
 
   function handleSelection(selection) {
     setSelectedAnswer(selection);
